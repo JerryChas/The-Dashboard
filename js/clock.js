@@ -20,12 +20,16 @@ function clock(monthType, dayType) {
     const date = obj.getDate(); // dagens datum
     
     // Lagrar timma, minut, sekund
-    const hr = obj.getHours();
-    const min = obj.getMinutes();
-    const sec = obj.getSeconds();
+    let hr = obj.getHours();
+    let min = obj.getMinutes();
+    let sec = obj.getSeconds();
 
     const currentMonth = monthType[month];
     const currentDay = dayType[day];
+
+    // Om talet är mindre än 10, startar det med "0"
+    min = min < 10 ? '0' + min : min;
+    sec = sec < 10 ? '0' + sec : sec;
     
     // Skapa HTML-element för varje variabel och infoga dem i container
     clockContainer.innerHTML = `
