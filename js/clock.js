@@ -35,7 +35,9 @@ function clock(monthType, dayType) {
     clockContainer.innerHTML = `
     <div class="day-name">${currentDay}</div>
     <div class="time_div">
-        <div class="formated-time">${hr} : ${min} : ${sec}</div>
+        <div class="hour">${hr}</div>
+        <div class="minute">${min}</div>
+        <div class="second">${sec}</div>
     </div>
     <div class="date_div">
         <div class="year">${year}</div>
