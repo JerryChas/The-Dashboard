@@ -1,6 +1,8 @@
 
 const clockContainer = document.querySelector('.clock_container');
 
+clockContainer.innerHTML = localStorage.getItem('clock');
+
 
 function clock() {
     // Hämtar datum och tid
@@ -50,6 +52,8 @@ function clock() {
         <div class="date">${date}</div>
     </div>
     `;
+
+    localStorage.setItem('clock', clockContainer.innerHTML)
 }
 
 
