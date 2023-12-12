@@ -1,0 +1,58 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.clock_container {
+    border: 1px solid;
+
+}
+.clock-style-1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 20em;
+
+    
+    .date_div {
+        /* border: 1px dotted; */
+        display: flex;
+        gap: 1em
+        
+    }
+    
+    .time_div {
+        /* border: 1px dashed; */
+        display: flex;
+        font-size: 2em;
+
+    }
+
+}
+
+.clock-style-2 {
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 20em;
+
+    
+    .date_div {
+        /* border: 1px dotted; */
+        display: flex;
+        gap: 3em
+        
+    }
+    
+    .time_div {
+        /* border: 1px dashed; */
+        display: flex;
+        font-size: 2em;
+
+    }
+
+}

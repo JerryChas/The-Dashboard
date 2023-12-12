@@ -29,16 +29,14 @@ function clock(monthType, dayType) {
     
     // Skapa HTML-element för varje variabel och infoga dem i container
     clockContainer.innerHTML = `
-    <div id="date_div>
-        <div id="year">${year}</div>
-        <div id="month-name">${currentMonth}</div>
-        <div id="day-name">${currentDay}</div>
-        <div id="date">${date}</div>
+    <div class="day-name">${currentDay}</div>
+    <div class="time_div">
+        <div class="formated-time">${hr} : ${min} : ${sec}</div>
     </div>
-    <div id="time_div">
-        <div id="hour">${hr}</div>
-        <div id="minute">${min}</div>
-        <div id="second">${sec}</div>
+    <div class="date_div">
+        <div class="year">${year}</div>
+        <div class="month-name">${currentMonth}</div>
+        <div class="date">${date}</div>
     </div>
     `;
 }
@@ -48,3 +46,7 @@ function clock(monthType, dayType) {
 setInterval(() => {
     clock(monthShort, dayFull);
 }, 1000);
+
+// clock(monthShort, dayFull);
+
+
