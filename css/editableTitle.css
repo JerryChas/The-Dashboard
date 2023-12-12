@@ -1,0 +1,11 @@
+
+.editable {
+    /* border: 1px dotted; */
+    height: fit-content;
+    cursor: pointer;
+    text-align: center;
+}
+
+.editable:focus {
+    outline: none;
+}
