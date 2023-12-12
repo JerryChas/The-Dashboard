@@ -1,7 +1,10 @@
-
+// Hämtar klockans element
 const clockContainer = document.querySelector('.clock_container');
 
+// Uppdaterar klockan med senaste data från localstorage
+clockContainer.innerHTML = localStorage.getItem('clock');
 
+//** KLOCKAN **/
 function clock() {
     // Hämtar datum och tid
     const obj = new Date(); 
@@ -25,6 +28,7 @@ function clock() {
     const monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const monthFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+    // Byter värdet till textformat beroende på dag/månad
     const currentMonthFull = monthFull[month];
     const currentMonthShort = monthShort[month];
     const currentDayFull = dayFull[day];
@@ -50,6 +54,9 @@ function clock() {
         <div class="date">${date}</div>
     </div>
     `;
+
+    // Sparar klockans innehåll i localstorage
+    localStorage.setItem('clock', clockContainer.innerHTML)
 }
 
 
@@ -58,6 +65,7 @@ setInterval(() => {
     clock();
 }, 1000);
 
+//* Statisk klocka
 // clock(monthShort, dayFull);
 
 
