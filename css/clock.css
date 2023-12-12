@@ -10,18 +10,25 @@
     border: 1px solid;
     height: fit-content;
 }
+
 .clock-style-1 {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 20em;
 
+    .day-short {
+        display: none;
+    }
     
     .date_div {
         /* border: 1px dotted; */
         display: flex;
-        gap: 1em
-        
+        gap: 1em;
+
+        .month-full {
+            display: none;
+        }
     }
     
     .time_div {

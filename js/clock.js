@@ -1,15 +1,8 @@
 
 const clockContainer = document.querySelector('.clock_container');
 
-// Dagarna i text
-const dayShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const dayFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-// Månaderna i text
-const monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const monthFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-function clock(monthType, dayType) {
+function clock() {
     // Hämtar datum och tid
     const obj = new Date(); 
     
@@ -24,16 +17,27 @@ function clock(monthType, dayType) {
     let min = obj.getMinutes();
     let sec = obj.getSeconds();
 
-    const currentMonth = monthType[month];
-    const currentDay = dayType[day];
+    // Dagarna i text
+    const dayShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dayFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
+    // Månaderna i text
+    const monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const monthFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+    const currentMonthFull = monthFull[month];
+    const currentMonthShort = monthShort[month];
+    const currentDayFull = dayFull[day];
+    const currentDayShort = dayShort[day];
+    
     // Om talet är mindre än 10, startar det med "0"
     min = min < 10 ? '0' + min : min;
     sec = sec < 10 ? '0' + sec : sec;
     
     // Skapa HTML-element för varje variabel och infoga dem i container
     clockContainer.innerHTML = `
-    <div class="day-name">${currentDay}</div>
+    <div class="day-name day-full">${currentDayFull}</div>
+    <div class="day-name day-short">${currentDayShort}</div>
     <div class="time_div">
         <div class="hour">${hr}</div>
         <div class="minute">${min}</div>
@@ -41,7 +45,8 @@ function clock(monthType, dayType) {
     </div>
     <div class="date_div">
         <div class="year">${year}</div>
-        <div class="month-name">${currentMonth}</div>
+        <div class="month-name month-full">${currentMonthFull}</div>
+        <div class="month-name month-short">${currentMonthShort}</div>
         <div class="date">${date}</div>
     </div>
     `;
@@ -50,7 +55,7 @@ function clock(monthType, dayType) {
 
 // Anropar klockan och uppdaterar den varje sekund 
 setInterval(() => {
-    clock(monthShort, dayFull);
+    clock();
 }, 1000);
 
 // clock(monthShort, dayFull);
