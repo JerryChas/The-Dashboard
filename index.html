@@ -14,11 +14,36 @@
     <title>My Dashboard</title>
 </head>
 <body>
+    
     <div class="clock_container clock-style-1">
         <!-- Här är klockan och datum -->
     </div>
     
     <h1 id="editable-title" class="editable" spellcheck="false" contenteditable="true">My Dashboard</h1>
+
+    <div class="modal-popup hidden">
+        <span class="modal-close_btn">&times</span>
+        <!-- Här renderas innehåll beroende på vad som ska visas -->
+
+        <h2>New Quicklink</h2>
+
+        <label for="link-title_input">Title</label>
+        <input id="link-title_input" type="text" placeholder="Title for your link" maxlength="10" required>
+        
+        <label for="link-url_input">URL</label>
+        <input id="link-url_input" type="url" placeholder="website url" required>
+
+        <div class="link-status_div">
+            <h3>Link status</h3>
+            <div class="link-status">
+                <!-- Här visas OG-protokollet -->
+                <span id="og-protocol">http://</span>
+            </div>
+        </div>
+
+        <div class="add-new-link_btn"></div>
+    </div>
+
     <div class="cards_container">
         <div class="card quick-links_card">
             <h2>Quicklinks</h2>

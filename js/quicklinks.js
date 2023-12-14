@@ -1,5 +1,5 @@
 
-// Array med snabblänkar
+// Array med snabblänkar --Innehåller standardlänkar från start
 const quickLinks = [
     { text: 'Google', link: 'https://www.google.com/'},
     { text: 'Github', link: 'https://github.com/' },
@@ -15,7 +15,7 @@ const linksHTML = quickLinks.map((qlink) => {
 
     //* FAVicon *//
     const faviconURL = `${qlink.link}/favicon.ico`;
-    console.log(faviconURL)
+    // console.log(faviconURL)
     
     //Returnera HTML
     return `
@@ -60,3 +60,16 @@ linksContainer.querySelectorAll('.link').forEach((qlink) => {
 });
 
 //* -- KNAPP: "LÄGG TILL länk" 
+
+const addQuckLink = document.querySelector('.add-quick-link')
+
+addQuckLink.addEventListener('click', () => {
+    
+    const modalPopup = document.querySelector('.modal-popup');
+
+    const addLinkForm = `
+    
+    `
+    
+})
+
