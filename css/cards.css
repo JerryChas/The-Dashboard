@@ -18,16 +18,26 @@
 
 /* ------- QuickLinks ------- */
 
-.quick-links_container {
+.quick-links_card {
     display: flex;
     flex-direction: column;
     padding: .5em .1em;
 }
 
-.links_div {
+.links_container {
     border: 1px dotted blue;
     height: 100%;
+    width: 90%;
 }
+
+.link {
+    display: flex;
+    justify-content: space-between;
+    margin: .1em;
+}
+
+
+
 
 .add-quick-link{
     border-radius: 3px;
