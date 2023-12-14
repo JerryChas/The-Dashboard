@@ -30,6 +30,12 @@
     width: 90%;
 }
 
+.quick-link_favicon {
+    width: 1.3em;
+    filter: grayscale(40%);
+    border-radius: 50%;
+}
+
 .link {
     display: flex;
     justify-content: space-between;
