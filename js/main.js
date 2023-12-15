@@ -1,8 +1,8 @@
 //******** FETCH JSON ********//
-async function fetchJSON(url) {
+async function fetchJSON(url, option) {
     try {
-        const response = await fetch(url);
-        if(!response.ok && response.status !== 404) {
+        const response = await fetch(url, option);
+        if(!response.ok) {
             throw new Error(`Förfrågan misslyckades. ${response.status}`);       
         }
         return await response.json()

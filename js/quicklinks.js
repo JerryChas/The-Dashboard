@@ -73,3 +73,23 @@ addQuckLink.addEventListener('click', () => {
     
 })
 
+//* -- Link PREVIEW -- *//
+const apiKey = '86dbf80dd100d16329310855021aa563';
+const apiUrl = 'https://api.linkpreview.net/';
+const linkToPreview = 'google.com';
+const requestOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Linkpreview-Api-Key': apiKey,
+    },
+    body: new URLSearchParams({
+        q: linkToPreview,
+    }),
+};
+
+fetchJSON(apiUrl, requestOptions).then((prop)=> {
+    console.log(prop)
+}) 
+
+
