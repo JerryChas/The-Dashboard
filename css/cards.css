@@ -43,11 +43,38 @@
 }
 
 
-
-
 .add-quick-link{
     border-radius: 3px;
     background-color: lightblue;
     padding: .3em;
     justify-self: end;
+}
+
+/* INSIDE MODAL (new quicklink) */
+
+
+
+.link-preview_div {
+
+    overflow: hidden;
+
+    border: 1px solid red;
+    display: flex;
+    height: 30%;
+    
+    
+    .link-preview-text {
+        border-left: 3px solid black;
+        padding: .2em .4em;
+
+    }
+
+    img {
+        max-width: 40%;
+    }
+
+}
+
+.add-new-link_btn {
+    
 }

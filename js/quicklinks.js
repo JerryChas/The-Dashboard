@@ -1,3 +1,17 @@
+//* -- Link PREVIEW -- *//
+const apiKey = '86dbf80dd100d16329310855021aa563';
+const apiUrl = 'https://api.linkpreview.net/';
+let linkToPreview = '';
+const requestOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Linkpreview-Api-Key': apiKey,
+    },
+    body: new URLSearchParams({
+        q: linkToPreview,
+    }),
+};
 
 // Array med snabblänkar --Innehåller standardlänkar från start
 const quickLinks = [
@@ -65,31 +79,56 @@ const addQuckLink = document.querySelector('.add-quick-link')
 
 addQuckLink.addEventListener('click', () => {
     
+    // Hämtar modal
     const modalPopup = document.querySelector('.modal-popup');
-
-    const addLinkForm = `
+    
+    // Renderar innehåll i modal
+    const newLinkForm = modalPopup.innerHTML = `
     
     `
+
     
 })
 
-//* -- Link PREVIEW -- *//
-const apiKey = '86dbf80dd100d16329310855021aa563';
-const apiUrl = 'https://api.linkpreview.net/';
-const linkToPreview = 'http://www.google.com/';
-const requestOptions = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'X-Linkpreview-Api-Key': apiKey,
-    },
-    body: new URLSearchParams({
-        q: linkToPreview,
-    }),
-};
 
-// fetchJSON(apiUrl, requestOptions).then((prop)=> {
-//     console.log(prop)
-// }) 
+//* ----- SKAPA NY SNABBLÄNK ----- *//
+// Hämtar element inne i modalen
+const linkTitleValue = document.getElementById('link-title_input').value
+// console.log(linkUrlValue)
+
+//* Kontrollera URL
+const checkUrlBtn = document.querySelector('.check-url_btn')
+checkUrlBtn.addEventListener('click', () => {
+    
+    linkToPreview = document.getElementById('link-url_input').value
+    
+    // Uppdatera requestOptions body med det nya värdet
+    requestOptions.body = new URLSearchParams({
+        q: linkToPreview,
+    });
+    
+    fetchJSON(apiUrl, requestOptions).then((prop)=> {
+        console.log(prop)
+        
+        const linkPreviewDiv = document.querySelector('.link-preview_div')
+        linkPreviewDiv.innerHTML = `
+        <img src="${prop.image}">
+        <div class="link-preview-text">
+        <h4>${prop.title}</h4>
+        <p>${prop.description}Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in</p>
+        </div>
+        `
+        // localStorage.setItem('linkPreview', linkPreviewDiv.innerHTML)
+    }) 
+    const linkPreviewDiv = document.querySelector('.link-preview_div')
+    // linkPreviewDiv.innerHTML = localStorage.getItem('linkPreview')
+})
+
+//* Lägg till den nya snabblänken
+const addNewLinkBtn = document.querySelector('.add-new-link_btn')
+
+addNewLinkBtn.addEventListener('click', () => {
+
+})
 
 
