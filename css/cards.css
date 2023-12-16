@@ -52,13 +52,12 @@
 
 /* INSIDE MODAL (new quicklink) */
 
-
-
 .link-preview_div {
 
     overflow: hidden;
 
-    border: 1px solid red;
+    border: 1px dashed black;
+    border-radius: .3em;
     display: flex;
     height: 30%;
     
@@ -75,6 +74,4 @@
 
 }
 
-.add-new-link_btn {
-    
-}
+
