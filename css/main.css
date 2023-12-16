@@ -15,33 +15,48 @@ body {
 
 }
 
+.hidden {
+    display: none;
+    visibility: hidden;
+    transform: scale(0);
+}
+
 
 /* MODAL BASE */
 .modal-popup {
     display: flex;
-    flex-direction: column;
-    align-content: center;
-    z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-
+    
+    flex-direction: column;
+    align-content: center;
     width: 50%;
     height: 50%;
     padding: .5em;
     background-color: #FFF;
     border-radius: 1em;
     border: 2px solid black;
-
+    z-index: 2;
+    
     .modal-close_btn {
         margin: 0 .3em;
         font-size: 2em;
         align-self: end;
+    }   
+
+    .modal-popup_content{
+        /* border: 1px dotted; */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+        
+        button {
+            padding: .2em;
+            margin: .2em;
+        }
     }
 
-    button {
-        padding: .2em;
-        margin: .2em;
-    }
 }
