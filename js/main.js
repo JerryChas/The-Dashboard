@@ -12,3 +12,20 @@ async function fetchJSON(url, option) {
     }
 }
 
+function toggleModalPopup() {
+    // Hämtar modal
+    document.querySelector('.modal-popup').classList.toggle('hidden');
+}
+
+//! får kolla på denna sen
+// function windowOnClick(event) {
+//     const modalPopup = document.querySelector('.modal-popup');
+
+//     // Kontrollera om det klickade elementet eller dess föräldrar har klassen 'modal-popup'
+//     if (!event.target.closest('.modal-popup')) {
+//         if (!modalPopup.classList.contains('hidden')) {
+//             console.log('Klickat utanför');
+//             toggleModalPopup();
+//         }
+//     }
+// }
