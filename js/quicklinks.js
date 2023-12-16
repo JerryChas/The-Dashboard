@@ -86,12 +86,16 @@ function renderQuickLinks() {
 
     //* -- KNAPP: "TA BORT länk" 
     // För varje snabblänk...
-    linksContainer.querySelectorAll('.link').forEach((qlink) => {
+    linksContainer.querySelectorAll('.link').forEach((qlink, index) => {
     // ... hämtar vi dess 'remove-knapp"
     const removeLinkBtn = qlink.querySelector('.remove-link_btn');
     // När vi klickar på knappen tas den specifika snabblänk bort 
     removeLinkBtn.addEventListener('click', () => {
-        linksContainer.removeChild(qlink)
+        // Ta bort objektet från quickLinks-arrayen
+        quickLinks.splice(index, 1);
+        // Uppdatera renderingen
+        renderQuickLinks();
+        // console.log(quickLinks)
     })
 });
 
