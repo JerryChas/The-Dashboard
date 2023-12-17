@@ -7,26 +7,27 @@ const apiKey = '86dbf80dd100d16329310855021aa563';
 const apiUrl = 'https://api.linkpreview.net/';
 let linkToPreview = '';
 const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'X-Linkpreview-Api-Key': apiKey,
-  },
-  body: new URLSearchParams({
-    q: linkToPreview,
-  }),
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Linkpreview-Api-Key': apiKey,
+    },
+    body: new URLSearchParams({
+        q: linkToPreview,
+    }),
 };
 
 
-
 //* -- SNABBLÄNKAR Array
-const quickLinks = [
+let quickLinks = [
     { text: 'Google', link: 'https://www.google.com/' },
     { text: 'Github', link: 'https://github.com/' },
     { text: 'ChatGPT', link: 'https://chat.openai.com/' },
     { text: 'MDN', link: 'https://developer.mozilla.org/' },
 ];
 
+// Hämtar snabblänkar från LS eller renderar ut standardinställningar
+quickLinks = JSON.parse(localStorage.getItem('quickLinks')) || renderQuickLinks();
 
 
 //* ----===----===----=== FUNKTIONER ===----===----===---- *//
@@ -52,11 +53,16 @@ function addNewQuickLink() {
 
     // Rensar input-fälten
     document.getElementById('link-title_input').value = '';
-    document.getElementById('link-url_input').value = '';
+    document.getElementById('link-url_input').value = 'https://';
     document.querySelector('.link-preview_div').innerHTML = '';
   } catch (err) {
     console.log('Invalid URL');
-    // Hantera felmeddelande här, till exempel visa en varning för användaren
+    // om URLn är felaktig visas det i Preview-rutan
+    document.querySelector('.link-preview_div').innerHTML = `
+    <div class="link-preview-text_invalid">
+    <h4>INVALID URL</h4>
+    </div>
+    `;
   }
 }
 
@@ -78,15 +84,14 @@ function handleFaviconError(imgElement, link) {
 //* ----=== RENDERAR SNABBLÄNKAR
 function renderQuickLinks() {
     
-    // localStorage.setItem('quickLinks', JSON.stringify(quickLinks))
-    
-
-  const linksHTML = quickLinks.map((qlink) => {
-    //* FAVicon *//
-    const faviconURL = `${qlink.link}/favicon.ico`;
-
-    //Returnera HTML
-    return `
+    // Renderar snabblänkarna 
+    const linksHTML = quickLinks.map((qlink) => {
+        //* FAVicon *//
+        //skapar favicon utifrån länk
+        const faviconURL = `${qlink.link}/favicon.ico`;
+        
+        //Returnera HTML
+        return `
         <div class="link">
         <img class="quick-link_favicon" src="${faviconURL}" onerror="handleFaviconError(this, '${qlink.link}')">
         <a href="${qlink.link}" target="_blank">
@@ -95,24 +100,27 @@ function renderQuickLinks() {
         <span class="remove-link_btn">&times</span>
         </div>
         `;
-  });
-  // Lägger till länkarna i snabblänkskortet
-  linksContainer.innerHTML = linksHTML.join('');
-
-  //* -- KNAPP: "TA BORT länk"
-  // För varje snabblänk...
-  linksContainer.querySelectorAll('.link').forEach((qlink, index) => {
-    // ... hämtar vi dess 'remove-knapp"
-    const removeLinkBtn = qlink.querySelector('.remove-link_btn');
-    // När vi klickar på knappen tas den specifika snabblänk bort
-    removeLinkBtn.addEventListener('click', () => {
-      // Ta bort objektet från quickLinks-arrayen
-      quickLinks.splice(index, 1);
-      // Uppdatera renderingen
-      renderQuickLinks();
-      // console.log(quickLinks)
     });
-  });
+    // Lägger till länkarna i snabblänkskortet
+    linksContainer.innerHTML = linksHTML.join('');
+    
+    //* -- KNAPP: "TA BORT länk"
+    // För varje snabblänk...
+    linksContainer.querySelectorAll('.link').forEach((qlink, index) => {
+        // ... hämtar vi dess 'remove-knapp"
+        const removeLinkBtn = qlink.querySelector('.remove-link_btn');
+        // När vi klickar på knappen tas den specifika snabblänk bort
+        removeLinkBtn.addEventListener('click', () => {
+            // Ta bort objektet från quickLinks-arrayen
+            quickLinks.splice(index, 1);
+            // Uppdatera renderingen
+            renderQuickLinks();
+            // console.log(quickLinks)
+        });
+    });
+
+    //Sparar länkarna i localstorage
+    localStorage.setItem('quickLinks', JSON.stringify(quickLinks))
 }
 
 //* ----=== ÖPPNAR MODAL MED INNEHÅLL
@@ -131,7 +139,7 @@ function openQuickLinkModal() {
     <input id="link-title_input" type="text" placeholder="Title for your link" maxlength="10" required>
     
     <label for="link-url_input">URL</label>
-    <input id="link-url_input" type="url" placeholder="website url" required>
+    <input id="link-url_input" type="url" value="https://" placeholder="website url" required>
     <button class="check-url_btn">check URL</button>
     
     <h3 class="link-preview_heading">Link Preview</h3>
