@@ -68,6 +68,10 @@
 
     }
 
+    .link-preview-text_invalid {
+        margin: auto;
+    }
+
     img {
         max-width: 40%;
     }
