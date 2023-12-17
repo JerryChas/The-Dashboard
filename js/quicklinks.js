@@ -35,12 +35,18 @@ quickLinks = JSON.parse(localStorage.getItem('quickLinks')) || renderQuickLinks(
 //* ----=== SKAPA NY SNABBLÄNK
 function addNewQuickLink() {
   // Hämtar värden från input-fälten
-  const linkTitleValue = document.getElementById('link-title_input').value;
+  let linkTitleValue = document.getElementById('link-title_input').value;
   const linkUrlValue = document.getElementById('link-url_input').value;
 
   // Kontrollera om linkUrlValue är en giltig URL
   try {
     new URL(linkUrlValue);
+
+    // Kontrollera om linkTitleValue är tomt
+    if (!linkTitleValue.trim()) {
+      // Om det är tomt, tilldela ett standardvärde, till exempel 'noTitle'
+      linkTitleValue = 'noTitle';
+    }
 
     // Skapar ett nytt objekt med de angivna värdena
     const newLink = { text: linkTitleValue, link: linkUrlValue };
