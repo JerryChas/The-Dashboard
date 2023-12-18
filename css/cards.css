@@ -7,6 +7,9 @@
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
+    padding: .5em .1em;
     border: 1px solid ;
     border-radius: 5px;
     align-items: center;
@@ -14,21 +17,20 @@
     height: 90%;
 }
 
-
-
-/* ------- QuickLinks ------- */
-
-.quick-links_card {
-    display: flex;
-    flex-direction: column;
-    padding: .5em .1em;
-}
-
-.links_container {
+.card-content {
     border: 1px dotted blue;
     height: 100%;
     width: 90%;
 }
+
+.card_btn {
+    border-radius: 3px;
+    background-color: lightblue;
+    padding: .3em;
+    justify-self: end;
+}
+
+/* ------- QuickLinks ------- */
 
 .quick-link_favicon {
     width: 1.3em;
@@ -42,13 +44,6 @@
     margin: .1em;
 }
 
-
-.add-quick-link{
-    border-radius: 3px;
-    background-color: lightblue;
-    padding: .3em;
-    justify-self: end;
-}
 
 /* INSIDE MODAL (new quicklink) */
 
