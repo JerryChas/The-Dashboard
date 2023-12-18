@@ -74,17 +74,13 @@ function addNewQuickLink() {
 
 //* ----=== HANTERAR FAVICON-ERROR
 function handleFaviconError(imgElement, link) {
+  
   //Detta är en annat sätt att nå favicon
   const backupURL = `https://s2.googleusercontent.com/s2/favicons?domain=${link}`;
-  // Om ingen favicon kan hittas används en local fil
-  const LocalBackupURL = './img/quicklink-icon_backup.png';
 
   // Sätter källan för img-elementet baserat på backup-URL:er
-  if (imgElement.src !== backupURL) {
-    imgElement.src = backupURL;
-  } else if (imgElement.src !== LocalBackupURL) {
-    imgElement.src = LocalBackupURL;
-  }
+  imgElement.src = backupURL;
+  
 }
 
 //* ----=== RENDERAR SNABBLÄNKAR
@@ -99,7 +95,7 @@ function renderQuickLinks() {
         //Returnera HTML
         return `
         <div class="link">
-        <img class="quick-link_favicon" src="${faviconURL}" onerror="handleFaviconError(this, '${qlink.link}')">
+        <img class="quick-link_favicon" src="${faviconURL}" onerror="handleFaviconError(this, '${qlink.link}')"alt="QL">
         <a href="${qlink.link}" target="_blank">
         <p>${qlink.text}</p>
         </a>
