@@ -3,7 +3,7 @@
 const editableTitle = document.getElementById('editable-title');
 
 // Hämtar den sparade texten ur localstorage
-editableTitle.innerText = localStorage.getItem('Title')
+editableTitle.innerText = localStorage.getItem('Title') || 'My Dashboard'
 
 // Sparar texten i localstorage när fokus tas bort från elementet
 editableTitle.addEventListener('blur', (e) => {
