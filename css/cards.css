@@ -49,12 +49,7 @@
 
 .link-preview_div {
 
-    overflow: hidden;
-
-    border: 1px dashed black;
-    border-radius: .3em;
-    display: flex;
-    height: 30%;
+    
     
     
     .link-preview-text {

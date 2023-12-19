@@ -142,14 +142,14 @@ function openQuickLinkModal() {
     
     <label for="link-url_input">URL</label>
     <input id="link-url_input" type="url" value="https://" placeholder="website url" required>
-    <button class="check-url_btn">check URL</button>
+    <button class="check-url_btn modal_btns">check URL</button>
     
     <h3 class="link-preview_heading">Link Preview</h3>
-    <div class="link-preview_div">
+    <div class="link-preview_div preview_div">
     
     </div>
     
-    <button class="add-new-link_btn">Add</button>
+    <button class="add-new-link_btn modal_btns">Add</button>
     `;
   //* --> KNAPP: "check URL" -(visar link preview)
   // Lyssna på knappklick för att checka URL

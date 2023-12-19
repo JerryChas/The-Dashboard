@@ -53,10 +53,20 @@ body {
         height: 100%;
         overflow: hidden;
         
-        button {
-            padding: .2em;
-            margin: .2em;
-        }
+        
+    }
+    
+    .modal_btns {
+        padding: .2em;
+        margin: .2em;
     }
 
+    .preview_div{
+        overflow: hidden;
+        
+        border: 1px dashed black;
+        border-radius: .3em;
+        display: flex;
+        height: 30%;
+    }
 }
