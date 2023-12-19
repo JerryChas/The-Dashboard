@@ -14,6 +14,11 @@ async function fetchJSON(url, option) {
 function toggleModalPopup() {
   // Hämtar modal
   document.querySelector('.modal-popup').classList.toggle('hidden');
+  
+  //* --> KNAPP: "close" -(stänger ner modalen)
+  document
+    .querySelector('.modal-close_btn')
+    .addEventListener('click', toggleModalPopup);
 }
 
 function geoFindMe() {

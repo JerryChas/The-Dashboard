@@ -34,10 +34,7 @@ function openWeatherModal() {
 //   const addNewLinkBtn = document.querySelector('.add-new-link_btn');
 //   addNewLinkBtn.addEventListener('click', addNewQuickLink);
 
-  //* --> KNAPP: "close" -(stänger ner modalen)
-  document
-    .querySelector('.modal-close_btn')
-    .addEventListener('click', toggleModalPopup);
+  
 }
 
 
