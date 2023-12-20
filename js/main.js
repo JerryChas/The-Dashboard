@@ -22,36 +22,28 @@ function toggleModalPopup() {
 }
 
 function geoFindMe() {
-//   const status = document.querySelector("#status");
-//   const mapLink = document.querySelector("#map-link");
+  return new Promise((resolve, reject) => {
+    function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
-//   mapLink.href = '';
-//   mapLink.textContent = '';
+      // Min nuvarande position
+      console.log(`https://maps.google.com/?q=${latitude},${longitude}`);
+      resolve({ latitude, longitude });
+    }
 
-  function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+    function error() {
+      reject('Unable to retrieve your location');
+    }
 
-    // status.textContent = '';
-    // mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-    // mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
-
-    // Min nuvarande position
-    console.log(`https://maps.google.com/?q=${latitude},${longitude}`);
-  }
-
-  function error() {
-    status.textContent = 'Unable to retrieve your location';
-  }
-
-  if (!navigator.geolocation) {
-    console.log('Geolocation is not supported by your browser');
-    status.textContent = 'Geolocation is not supported by your browser';
-  } else {
-    console.log('Locating…');
-    status.textContent = 'Locating…';
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
+    if (!navigator.geolocation) {
+      console.log('Geolocation is not supported by your browser');
+      reject('Geolocation is not supported by your browser');
+    } else {
+      console.log('Locating…');
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  });
 }
 
 //! får kolla på denna sen
