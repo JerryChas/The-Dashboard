@@ -65,7 +65,7 @@ function addNewQuickLink() {
     console.log('Invalid URL');
     // om URLn är felaktig visas det i Preview-rutan
     document.querySelector('.link-preview_div').innerHTML = `
-    <div class="link-preview-text_invalid">
+    <div class="preview-text_invalid">
     <h4>INVALID URL</h4>
     </div>
     `;
@@ -99,7 +99,7 @@ function renderQuickLinks() {
         <a href="${qlink.link}" target="_blank">
         <p>${qlink.text}</p>
         </a>
-        <span class="remove-link_btn">&times</span>
+        <span class="remove_btn">&times</span>
         </div>
         `;
     });
@@ -110,9 +110,9 @@ function renderQuickLinks() {
     // För varje snabblänk...
     linksContainer.querySelectorAll('.link').forEach((qlink, index) => {
         // ... hämtar vi dess 'remove-knapp"
-        const removeLinkBtn = qlink.querySelector('.remove-link_btn');
+        const removeBtn = qlink.querySelector('.remove_btn');
         // När vi klickar på knappen tas den specifika snabblänk bort
-        removeLinkBtn.addEventListener('click', () => {
+        removeBtn.addEventListener('click', () => {
             // Ta bort objektet från quickLinks-arrayen
             quickLinks.splice(index, 1);
             // Uppdatera renderingen

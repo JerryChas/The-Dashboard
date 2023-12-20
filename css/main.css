@@ -69,4 +69,8 @@ body {
         display: flex;
         height: 30%;
     }
+
+    .preview-text_invalid {
+        margin: auto;
+    }
 }
