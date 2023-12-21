@@ -36,23 +36,50 @@
     
 }
 
-.remove_btn {
+.card-items {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: .8em;
-    height: .8em;
-    border-radius: 50%;
-    background-color: #cfcfcf; /* Anpassa färgen efter ditt behov */
-    color: #3c3c3c;
-    /* border: 1px solid #000000; */
-    border: none;
-    font-size: .5em;
-    padding: .3em;
-    margin: .2em .2em 0 0;
-    cursor: pointer;
+    border-radius: 30px 5px 10px 30px;
+    background-color: #f3f3f3;
+    max-width: 100%;
+    justify-content: space-between;
+    margin: .3em .1em;
+    box-shadow: 1px 1px 5px -4px #000;
 
+    &:hover {
+        
+        img {
+            transform: scale(0.9);
+        }
+    }
+    .item_target {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+
+    }
+    .remove_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+        background-color: #cfcfcf; /* Anpassa färgen efter ditt behov */
+        color: #3c3c3c;
+        /* border: 1px solid #000000; */
+        border: none;
+        font-size: .5em;
+        padding: .3em;
+        margin: .2em .2em 0 0;
+        cursor: pointer;
+    
+    }
 }
+
 
 .card_btn {
     border-radius: 3px;
@@ -63,32 +90,19 @@
 
 /* ------- QuickLinks ------- */
 
-.quick-link_favicon {
-    position: relative;
-    width: 1.3em;
-    filter: grayscale(40%);
-    border-radius: 50%;
-    
-    
-}
 
 .link {
-    border-radius: 30px 10px 10px 30px;
-    background-color: #fff;
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: .3em .1em;
     
     a {
-        width: 100%;
-        display: flex;
-        align-items: center;
-
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         
+        
+        .quick-link_favicon {
+        
+            width: 1.3em;
+            filter: grayscale(40%);
+            border-radius: 50%;
+            
+        }
         p {
             padding-left: 10%;
         }
@@ -96,6 +110,36 @@
     }
     
     
+}
+
+/* ------- Weather ------- */
+
+.weather_card{
+
+
+    .weather {
+        
+        .weather_icon {
+            filter: drop-shadow(0px 0px 1px #000);
+            width: 2.5em;
+        }
+        h3 {
+            font-size: 1em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .temperature {
+            /* border: 1px solid black; */
+            border-radius: .2em;
+            background-color: #fff;
+            font-size: .8em;
+            padding: .1em;
+        }
+        p {
+
+        }
+    }
 }
 
 

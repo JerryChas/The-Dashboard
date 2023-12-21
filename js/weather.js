@@ -122,11 +122,15 @@ async function renderWeatherList() {
 
         //Returnera HTML
         return `
-          <div class="weather">
-            <img class="weather_icon" src="${w.icon}" alt="${w.description}">
-            <h3>${w.name}</h3>
-            <span class="temperature">${w.temp}&degC</span>
-            <p>${w.main}</p>
+          <div class="weather card-items">
+            <div class="item_target">
+              <img class="weather_icon" src="${w.icon}" alt="${w.description}">
+              <div>
+                <h3>${w.name}</h3>
+                <span class="temperature">${w.temp}&degC</span>
+                <p>${w.main}</p>
+              </div>
+            </div>
             <button class="remove_btn">&times</button>
           </div>
         `;

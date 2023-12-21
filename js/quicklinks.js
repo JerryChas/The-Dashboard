@@ -94,8 +94,8 @@ function renderQuickLinks() {
         
         //Returnera HTML
         return `
-        <div class="link">
-        <a href="${qlink.link}" target="_blank">
+        <div class="link card-items">
+        <a class="item_target" href="${qlink.link}" target="_blank">
         <img class="quick-link_favicon" src="${faviconURL}" onerror="handleFaviconError(this, '${qlink.link}')"alt="QL">
         <p>${qlink.text}</p>
         </a>
