@@ -1,9 +1,10 @@
 /* ------- CARDS ------- */
 
 .cards_container {
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     display: flex;
     width: 90vw;
+    gap: .3em;
 }
 
 .card {
@@ -15,12 +16,21 @@
     align-items: center;
     width: 25%;
     height: 90%;
+    overflow: hidden;
 }
 
 .card-content {
     border: 1px dotted blue;
     height: 100%;
+    
     width: 90%;
+
+    overflow: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+      }
+    
 }
 
 .card_btn {
