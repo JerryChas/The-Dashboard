@@ -1,6 +1,10 @@
 const weatherContainer = document.querySelector('.weather_container');
 let weatherArray = [];
 
+// Hämtar väderrapporter från LS eller renderar ut standardinställningar
+weatherArray = JSON.parse(localStorage.getItem('weather')) || [];
+
+
 
 //* ----===----===----=== FUNKTIONER ===----===----===---- *//
 
@@ -140,8 +144,8 @@ function renderWeatherList() {
       });
   });
 
-  //Sparar väderrapporter i localstorage
-  // localStorage.setItem('weather', JSON.stringify(weatherArray))
+  // Sparar väderrapporter i local storage
+  localStorage.setItem('weather', JSON.stringify(weatherArray))
 }
 
 function handleLocationInput() {
@@ -198,6 +202,8 @@ function showWeatherPreview(latitude, longitude) {
 }
 
 //* ----===----===----=== ===----=== ===----===----===---- *//
+
+renderWeatherList()
 
 //* --> KNAPP: "Add Weather" -(öppnar modal)
 // Lyssna på knappklick för att öppna modal
