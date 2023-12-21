@@ -8,20 +8,22 @@
 }
 
 .card {
+    background-color: #ffffff9c;
     display: flex;
     flex-direction: column;
     padding: .5em .1em;
     border: 1px solid ;
-    border-radius: 5px;
+    border-radius: 10px;
     align-items: center;
     width: 25%;
-    height: 90%;
+    height: 20em;
     overflow: hidden;
 }
 
 .card-content {
-    border: 1px dotted blue;
+    /* border: 1px dotted blue; */
     height: 100%;
+    
     
     width: 90%;
 
@@ -30,8 +32,26 @@
     overflow-y: scroll;
     &::-webkit-scrollbar {
         display: none;
-      }
+    }
     
+}
+
+.remove_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+    background-color: #cfcfcf; /* Anpassa färgen efter ditt behov */
+    color: #3c3c3c;
+    /* border: 1px solid #000000; */
+    border: none;
+    font-size: .5em;
+    padding: .3em;
+    margin: .2em .2em 0 0;
+    cursor: pointer;
+
 }
 
 .card_btn {
@@ -44,15 +64,38 @@
 /* ------- QuickLinks ------- */
 
 .quick-link_favicon {
+    position: relative;
     width: 1.3em;
     filter: grayscale(40%);
     border-radius: 50%;
+    
+    
 }
 
 .link {
+    border-radius: 30px 10px 10px 30px;
+    background-color: #fff;
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: .1em;
+    margin: .3em .1em;
+    
+    a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        
+        p {
+            padding-left: 10%;
+        }
+        
+    }
+    
+    
 }
 
 

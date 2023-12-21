@@ -127,7 +127,7 @@ async function renderWeatherList() {
             <h3>${w.name}</h3>
             <span class="temperature">${w.temp}&degC</span>
             <p>${w.main}</p>
-            <span class="remove_btn">&times</span>
+            <button class="remove_btn">&times</button>
           </div>
         `;
       } catch (error) {
@@ -138,7 +138,7 @@ async function renderWeatherList() {
           <div class="weather">
             <h3>${w.name}</h3>
             <p>*not found*</p>
-            <span class="remove_btn">&times</span>
+            <button class="remove_btn">&times</button>
           </div>
         `;
       }

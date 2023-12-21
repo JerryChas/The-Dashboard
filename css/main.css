@@ -5,10 +5,16 @@
     margin: 0;
     padding: 0;
 }
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}
+
 
 body {
     
     background-color: cornsilk;
+    background-image: url('https://source.unsplash.com/random');
     min-height: 100vh;
     display: grid;
     justify-items: center;
