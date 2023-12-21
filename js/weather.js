@@ -143,24 +143,25 @@ function handleLocationInput() {
   // Hämtar inmatat värde ur location_input
   let locationInputValue = document.getElementById('location_input').value;
 
-  try {
-    // Söker efter plats baserat på namnet från API:et
-    fetchJSON(
-      `https://api.openweathermap.org/data/2.5/weather?q=${locationInputValue}&units=metric&appid=6ce2a025e75ef169171b5f6999c164b5&exclude=daily`
-    ).then((prop) => {
-      // ... Ditt befintliga kodblock ...
+  // Söker efter plats baserat på namnet från API:et
+  fetchJSON(
+    `https://api.openweathermap.org/data/2.5/weather?q=${locationInputValue}&units=metric&appid=6ce2a025e75ef169171b5f6999c164b5&exclude=daily`
+  )
+  .then((prop) => {
+    
+    try {
       // Anropa showWeatherPreview med latitude och longitude från prop
       showWeatherPreview(prop.coord.lat, prop.coord.lon);
-    });
-  } catch (err) {
-    console.log('Invalid LOCATION');
-    // om location är felaktig visas det i Preview-rutan
-    document.querySelector('.weather-preview_div').innerHTML = `
-    <div class="preview-text_invalid">
-    <h4>INVALID LOCATION</h4>
-    </div>
-    `;
-  }
+    } catch (error) {
+      console.log('Invalid LOCATION');
+      document.querySelector('.weather-preview_div').innerHTML = `
+        <div class="preview-text_invalid">
+        <h4>INVALID LOCATION</h4>
+        </div>
+        `;
+    }
+  });
+  
 }
 
 
