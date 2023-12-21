@@ -24,23 +24,41 @@ function toggleModalPopup() {
 function geoFindMe() {
   return new Promise((resolve, reject) => {
     function success(position) {
+      // Hämtar lat och long
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
       // Min nuvarande position
       console.log(`https://maps.google.com/?q=${latitude},${longitude}`);
+
+      // Skicka den aktuella positionen som resultat av löftet
       resolve({ latitude, longitude });
     }
 
     function error() {
-      reject('Unable to retrieve your location');
+      const errorMessage = 'Unable to retrieve your location';
+
+      // Logga felmeddelandet
+      console.error(errorMessage);
+
+      // Avvisa löftet med felmeddelandet
+      reject(errorMessage);
     }
 
+    // OM det ej fungerar att söka position
     if (!navigator.geolocation) {
-      console.log('Geolocation is not supported by your browser');
-      reject('Geolocation is not supported by your browser');
+      const errorMessage = 'Geolocation is not supported by your browser';
+
+      // Logga felmeddelandet
+      console.error(errorMessage);
+
+      // Avvisa löftet med felmeddelandet
+      reject(errorMessage);
     } else {
+      // Logga att vi försöker lokalisera positionen
       console.log('Locating…');
+
+      // Begär användarens nuvarande position
       navigator.geolocation.getCurrentPosition(success, error);
     }
   });

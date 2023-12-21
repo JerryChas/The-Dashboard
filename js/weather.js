@@ -35,7 +35,13 @@ function openWeatherModal() {
   const currentLocation = document.querySelector('.current-location_btn');
   currentLocation.addEventListener('click', () => {
     
-    geoFindMe().then((position) => {
+    document.querySelector('.weather-preview_div').innerHTML = `
+      <div class="preview-text_invalid">
+      <h4>Locating...</h4>
+      </div>
+      `;
+    
+      geoFindMe().then((position) => {
       showWeatherPreview(position.latitude, position.longitude)
     })
     
@@ -47,8 +53,7 @@ function openWeatherModal() {
   addNewWeatherBtn.addEventListener('click', addNewWeather);
 
 
-
-  //* --> INPUT: "location" -(söker på inmatad location)
+  //* --> KNAPP: "Search location" -(söker på inmatad location)
 const SearchLocationBtn = document.querySelector('.search-location_btn');
 // Lyssna på knappklick för att köra handleLocationInput
 SearchLocationBtn.addEventListener('click', () => {
