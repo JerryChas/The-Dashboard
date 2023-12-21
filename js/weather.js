@@ -20,6 +20,7 @@ function openWeatherModal() {
       
       <label for="location_input">Location</label>
       <input id="location_input" type="text" placeholder="Enter location" required>
+      <button class="search-location_btn modal_btns">Search</button>
       
       <h3 class="weather-preview_heading">Weather Preview</h3>
       <div class="weather-preview_div preview_div">
@@ -44,21 +45,32 @@ function openWeatherModal() {
   // Lyssna på knappklick för att lägga till ny väderleksrapport
   const addNewWeatherBtn = document.querySelector('.add-weather_btn');
   addNewWeatherBtn.addEventListener('click', addNewWeather);
+
+
+
+  //* --> INPUT: "location" -(söker på inmatad location)
+const SearchLocationBtn = document.querySelector('.search-location_btn');
+// Lyssna på knappklick för att köra handleLocationInput
+SearchLocationBtn.addEventListener('click', () => {
+  handleLocationInput();
+});
+
 }
 
 //* ----=== SKAPA NY VÄDERRAPPORT
 function addNewWeather() {
-  // Hämtar värdet från input-fältet
-  let locationValue = document.getElementById('location_input').value;
-
+  // Hämtar värdet från input-fältet (används som visningstitel i kortet)
+  let locationInput = document.getElementById('location_input').value
+  // (Använder titeln från preview)
+  let locationName = document.querySelector('.weather-preview_div h3').innerText;
   try {
     // Söker efter plats baserat på namnet från API:et
     fetchJSON(
-      `https://api.openweathermap.org/data/2.5/weather?q=${locationValue}&units=metric&appid=6ce2a025e75ef169171b5f6999c164b5&exclude=daily`
+      `https://api.openweathermap.org/data/2.5/weather?q=${locationName}&units=metric&appid=6ce2a025e75ef169171b5f6999c164b5&exclude=daily`
     ).then((prop) => {
       // Skapar ett nytt objekt med de angivna värdena
       const newWeather = {
-        name: prop.name,
+        name: locationInput,
         icon: `https://openweathermap.org/img/wn/${prop.weather[0].icon}@2x.png`,
         main: prop.weather[0].main,
         description: prop.weather[0].description,
@@ -123,9 +135,34 @@ function renderWeatherList() {
       });
   });
 
-  //Sparar länkarna i localstorage
-  // localStorage.setItem('quickLinks', JSON.stringify(quickLinks))
+  //Sparar väderrapporter i localstorage
+  // localStorage.setItem('weather', JSON.stringify(weatherArray))
 }
+
+function handleLocationInput() {
+  // Hämtar inmatat värde ur location_input
+  let locationInputValue = document.getElementById('location_input').value;
+
+  try {
+    // Söker efter plats baserat på namnet från API:et
+    fetchJSON(
+      `https://api.openweathermap.org/data/2.5/weather?q=${locationInputValue}&units=metric&appid=6ce2a025e75ef169171b5f6999c164b5&exclude=daily`
+    ).then((prop) => {
+      // ... Ditt befintliga kodblock ...
+      // Anropa showWeatherPreview med latitude och longitude från prop
+      showWeatherPreview(prop.coord.lat, prop.coord.lon);
+    });
+  } catch (err) {
+    console.log('Invalid LOCATION');
+    // om location är felaktig visas det i Preview-rutan
+    document.querySelector('.weather-preview_div').innerHTML = `
+    <div class="preview-text_invalid">
+    <h4>INVALID LOCATION</h4>
+    </div>
+    `;
+  }
+}
+
 
 //* VISA WEATHER PREVIEW *//
 function showWeatherPreview(latitude, longitude) {
