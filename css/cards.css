@@ -25,6 +25,7 @@
     
     width: 90%;
 
+    /* Det går att skrolla men scrollbar syns inte */
     overflow: hidden;
     overflow-y: scroll;
     &::-webkit-scrollbar {
