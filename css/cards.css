@@ -8,12 +8,9 @@
 }
 
 .card {
-    background-color: #ffffff9c;
     display: flex;
     flex-direction: column;
     padding: .5em .1em;
-    border: 1px solid ;
-    border-radius: 10px;
     align-items: center;
     width: 25%;
     height: 20em;

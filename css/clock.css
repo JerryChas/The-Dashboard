@@ -1,13 +1,7 @@
-*,
-::before,
-::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
 .clock_container {
-    border: 1px solid;
+    margin: .3em;
+    border-radius: 50px;
     height: fit-content;
 }
 
@@ -48,7 +42,6 @@
 }
 
 .clock-style-2 {
-    border: 1px solid;
     display: flex;
     align-items: center;
     flex-direction: column;
