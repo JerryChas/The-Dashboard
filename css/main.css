@@ -28,6 +28,11 @@ body {
     
     background-color: cornsilk;
     background-image: url('https://source.unsplash.com/random');
+    background-size: cover;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(0em, 1em, 2em,);
+
     min-height: 100vh;
     display: grid;
     justify-items: center;

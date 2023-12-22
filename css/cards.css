@@ -1,164 +1,140 @@
 /* ------- CARDS ------- */
 
 .cards_container {
-    /* border: 1px solid grey; */
-    display: flex;
-    width: 90vw;
-    gap: .3em;
+  /* border: 1px solid grey; */
+  display: flex;
+  width: 90vw;
+  max-width: 900px;
+  gap: 0.3em;
 }
 
 .card {
+    
     display: flex;
-    flex-direction: column;
-    padding: .5em .1em;
-    align-items: center;
-    width: 25%;
-    height: 20em;
-    overflow: hidden;
+  flex-direction: column;
+  padding: 0.5em 0.1em;
+  align-items: center;
+  width: 25%;
+  height: 20em;
+  overflow: hidden;
+
+   h2 {
+    font-size: clamp(1em, 3vw, 1.2em);
+    
+   }
 }
 
 .card-content {
-    /* border: 1px dotted blue; */
-    height: 100%;
-    
-    
-    width: 90%;
+  /* border: 1px dotted blue; */
+  height: 100%;
 
-    /* Det går att skrolla men scrollbar syns inte */
-    overflow: hidden;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    
+  width: 90%;
+
+  /* Det går att skrolla men scrollbar syns inte */
+  overflow: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .card-items {
+  display: flex;
+  border-radius: 30px 5px 10px 30px;
+  background-color: #f3f3f3;
+  max-width: 100%;
+  justify-content: space-between;
+  margin: 0.3em 0.1em;
+  box-shadow: 1px 1px 5px -4px #000;
+
+  &:hover {
+    img {
+      transform: scale(0.9);
+    }
+  }
+  .item_target {
+    width: 100%;
     display: flex;
-    border-radius: 30px 5px 10px 30px;
-    background-color: #f3f3f3;
-    max-width: 100%;
-    justify-content: space-between;
-    margin: .3em .1em;
-    box-shadow: 1px 1px 5px -4px #000;
-
-    &:hover {
-        
-        img {
-            transform: scale(0.9);
-        }
-    }
-    .item_target {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-
-
-    }
-    .remove_btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: .8em;
-        height: .8em;
-        border-radius: 50%;
-        background-color: #cfcfcf; /* Anpassa färgen efter ditt behov */
-        color: #3c3c3c;
-        /* border: 1px solid #000000; */
-        border: none;
-        font-size: .5em;
-        padding: .3em;
-        margin: .2em .2em 0 0;
-        cursor: pointer;
-    
-    }
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .remove_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 50%;
+    background-color: #cfcfcf; /* Anpassa färgen efter ditt behov */
+    color: #3c3c3c;
+    /* border: 1px solid #000000; */
+    border: none;
+    font-size: 0.5em;
+    padding: 0.3em;
+    margin: 0.2em 0.2em 0 0;
+    cursor: pointer;
+  }
 }
 
-
 .card_btn {
-    border-radius: 3px;
-    background-color: lightblue;
-    padding: .3em;
-    justify-self: end;
+  border-radius: 3px;
+  background-color: lightblue;
+  padding: 0.3em;
+  justify-self: end;
 }
 
 /* ------- QuickLinks ------- */
 
-
 .link {
-    
-    a {
-        
-        
-        .quick-link_favicon {
-        
-            width: 1.3em;
-            filter: grayscale(40%);
-            border-radius: 50%;
-            
-        }
-        p {
-            padding-left: 10%;
-        }
-        
+  a {
+    .quick-link_favicon {
+      width: 1.3em;
+      filter: grayscale(40%);
+      border-radius: 50%;
     }
-    
-    
+    p {
+      padding-left: 10%;
+    }
+  }
 }
 
 /* ------- Weather ------- */
 
-.weather_card{
-
-
-    .weather {
-        
-        .weather_icon {
-            filter: drop-shadow(0px 0px 1px #000);
-            width: 2.5em;
-        }
-        h3 {
-            font-size: 1em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .temperature {
-            /* border: 1px solid black; */
-            border-radius: .2em;
-            background-color: #fff;
-            font-size: .8em;
-            padding: .1em;
-        }
-        p {
-
-        }
+.weather_card {
+  .weather {
+    .weather_icon {
+      filter: drop-shadow(0px 0px 1px #000);
+      width: 2.5em;
     }
+    h3 {
+      font-size: 1em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .temperature {
+      /* border: 1px solid black; */
+      border-radius: 0.2em;
+      background-color: #fff;
+      font-size: 0.8em;
+      padding: 0.1em;
+    }
+    p {
+    }
+  }
 }
-
 
 /* INSIDE MODAL (new quicklink) */
 
 .link-preview_div {
+  .link-preview-text {
+    border-left: 3px solid black;
+    padding: 0.2em 0.4em;
+  }
 
-    
-    
-    
-    .link-preview-text {
-        border-left: 3px solid black;
-        padding: .2em .4em;
-
-    }
-
-    
-
-    img {
-        max-width: 40%;
-    }
-
+  img {
+    max-width: 40%;
+  }
 }
-
-
