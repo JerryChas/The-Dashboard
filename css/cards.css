@@ -79,10 +79,17 @@
 }
 
 .card_btn {
-  border-radius: 3px;
-  background-color: lightblue;
-  padding: 0.3em;
+    display: flex;
+    white-space: nowrap;
+  border-radius: 50px;
+  /* background-color: lightblue; */
+  padding: .1em .3em;
   justify-self: end;
+  align-items: center;
+  gap: .3em;
+  cursor: pointer;
+
+    
 }
 
 /* ------- QuickLinks ------- */
