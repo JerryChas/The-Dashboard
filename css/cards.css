@@ -147,6 +147,17 @@
   }
 }
 
+/* ------- Notes ------- */
+
+.note_container{
+
+  textarea {
+    resize: none; /* Disable resizing in all browsers */
+    height: 100%;
+    width: 100%;
+  }
+}
+
 /* INSIDE MODAL (new quicklink) */
 
 .link-preview_div {
