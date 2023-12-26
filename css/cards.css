@@ -33,9 +33,14 @@
   /* Det går att skrolla men scrollbar syns inte */
   overflow: hidden;
   overflow-y: scroll;
+  /* Dölj scrollbar för Chrome, Safari och Edge */
   &::-webkit-scrollbar {
     display: none;
   }
+
+  /* Dölj scrollbar för Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
 .card-items {
@@ -150,9 +155,20 @@
 .note_container{
 
   textarea {
-    resize: none; /* Disable resizing in all browsers */
-    height: 100%;
+    border-radius: .3em;
+    padding: .5em;
+    resize: none;
+    height: 95%;
     width: 100%;
+    
+    /* Dölj scrollbar för Chrome, Safari och Edge */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Dölj scrollbar för Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
   }
 }
 
