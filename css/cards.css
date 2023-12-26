@@ -139,9 +139,7 @@
             font-weight: bold;
         }
 
-        .temperature{
-
-        }
+        
     }
     
   }
@@ -157,6 +155,35 @@
     width: 100%;
   }
 }
+
+/* ------- News ------- */
+
+.news_container {
+  
+  .news {
+    border-radius: 1em;
+    margin-bottom: .5em;
+    
+    
+    .item_target {
+      font-size: .8em;
+      white-space: wrap;
+      padding: .5em;
+
+    }
+  }
+
+}
+.visited-link {
+  background-color: #000; /* Ange den önskade bakgrundsfärgen här */
+  color: #cfcfcf; /* Ange den önskade textfärgen här */
+  border-radius: 0.5em; /* Rundade hörn för en snyggare look */
+  display: block; /* För att fylla hela item_target */
+  padding: 0.5em; /* Justera padding efter behov */
+  text-decoration: none; /* Ta bort standard understrykning på länken */
+}
+
+
 
 /* INSIDE MODAL (new quicklink) */
 

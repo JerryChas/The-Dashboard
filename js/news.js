@@ -55,6 +55,9 @@ function renderLatestNews() {
     });
 
     newsContainer.innerHTML = newsHTML.join('');
+
+    //Hanterar besökta länkar 
+    handleVisitedLinks()
 }
 
 //* ----=== Hanterar CDATA-sektion
@@ -63,8 +66,39 @@ function handleCDATAsection(element) {
     return element ? element.firstChild.nodeValue : '';
 }
 
+function handleVisitedLinks() {
+
+    console.log('inne i handleVisitedLinks()')
+
+    const links = document.querySelectorAll('.news a');
+    console.log(links.length)
+    console.log(links)
+
+
+    links.forEach(link => {
+        console.log(link)
+        if (link.visited) {
+            console.log('inne i if(link.visited)')
+            link.closest('.news.card-items').classList.add('visited-link');
+        }
+    });
+
+    links.forEach(link => {
+        link.addEventListener('click', function () {
+
+            console.log(`klickat på ${link}`)
+            this.visited = true;
+            this.closest('.news.card-items').classList.add('visited-link');
+        });
+    });
+
+}
+
 //* ----===----===----=== ===----=== ===----===----===---- *//
 
 // Anropar funktionen för att hämta och behandla nyhetsdata.
 fetchLatestNews()
 .then(renderLatestNews);
+
+
+
