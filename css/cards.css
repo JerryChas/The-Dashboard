@@ -166,7 +166,7 @@
     
     
     .item_target {
-      font-size: .8em;
+      font-size: .7em;
       white-space: wrap;
       padding: .5em;
 
@@ -175,12 +175,9 @@
 
 }
 .visited-link {
-  background-color: #000; /* Ange den önskade bakgrundsfärgen här */
+  background-color: #8080808b; /* Ange den önskade bakgrundsfärgen här */
   color: #cfcfcf; /* Ange den önskade textfärgen här */
-  border-radius: 0.5em; /* Rundade hörn för en snyggare look */
-  display: block; /* För att fylla hela item_target */
-  padding: 0.5em; /* Justera padding efter behov */
-  text-decoration: none; /* Ta bort standard understrykning på länken */
+  transform: scale(0.9);
 }
 
 

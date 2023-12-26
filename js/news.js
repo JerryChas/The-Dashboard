@@ -66,33 +66,43 @@ function handleCDATAsection(element) {
     return element ? element.firstChild.nodeValue : '';
 }
 
+//* ----=== Hanterar besökta nyhetslänkar
 function handleVisitedLinks() {
-
-    console.log('inne i handleVisitedLinks()')
-
     const links = document.querySelectorAll('.news a');
-    console.log(links.length)
-    console.log(links)
-
 
     links.forEach(link => {
-        console.log(link)
-        if (link.visited) {
-            console.log('inne i if(link.visited)')
-            link.closest('.news.card-items').classList.add('visited-link');
+        // Hämta besöksstatus från localStorage
+        const isVisited = localStorage.getItem(link.href);
+
+        // Uppdatera klassen baserat på besöksstatus
+        if (isVisited) {
+            link.closest('.card-items').classList.add('visited-link');
         }
     });
 
     links.forEach(link => {
-        link.addEventListener('click', function () {
+        link.addEventListener('click', function (event) {
+            // Hämta besöksstatus från localStorage
+            const isVisited = localStorage.getItem(this.href);
 
-            console.log(`klickat på ${link}`)
-            this.visited = true;
-            this.closest('.news.card-items').classList.add('visited-link');
+            if (isVisited) {
+                // Om länken är besökt, förhindra att länken öppnar url
+                event.preventDefault();
+
+                // Ta bort 'visited-link' klassen och uppdatera localStorage
+                this.closest('.card-items').classList.remove('visited-link');
+                localStorage.removeItem(this.href);
+            } else {
+                // Om länken inte är besökt, lägg till 'visited-link' klassen
+                this.closest('.card-items').classList.add('visited-link');
+
+                // Markera länken som besökt och uppdatera localStorage
+                localStorage.setItem(this.href, true);
+            }
         });
     });
-
 }
+
 
 //* ----===----===----=== ===----=== ===----===----===---- *//
 
