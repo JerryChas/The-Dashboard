@@ -1,0 +1,15 @@
+.random-bg_btn {
+    align-self: self-end;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.501);
+    height: fit-content;
+    cursor: pointer;
+    margin: .5em;
+
+    svg, span {
+        margin: .3em;
+    }
+
+}
