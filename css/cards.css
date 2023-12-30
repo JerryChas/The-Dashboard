@@ -1,28 +1,37 @@
 /* ------- CARDS ------- */
 
-.cards_container {
+/* .cards_container { */
   /* border: 1px solid grey; */
-  display: flex;
-  width: 90vw;
-  max-width: 900px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* width: 90vw; */
+  /* max-width: 900px; */
+  /* gap: 0.3em; */
+/* } */
+/* ------- CARDS ------- */
+
+.cards_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Fyra kolumner med lika bredd */
   gap: 0.3em;
+  max-width: 900px;
 }
 
 .card {
-    
-    display: flex;
+  display: flex;
   flex-direction: column;
   padding: 0.5em 0.1em;
   align-items: center;
-  width: 25%;
-  height: 20em;
+  width: 100%; /* Ta upp hela bredden av kolumnen */
+  max-height: 20em;
   overflow: hidden;
+  margin-bottom: 0.5em;
 
-   h2 {
+  h2 {
     font-size: clamp(1em, 3vw, 1.2em);
-    
-   }
+  }
 }
+
 
 .card-content {
   /* border: 1px dotted blue; */
@@ -97,6 +106,13 @@
     
 }
 
+@media (max-width: 640px) {
+  .cards_container{
+    grid-template-columns: 1fr;
+
+  }
+}
+
 /* ------- QuickLinks ------- */
 
 .link {
@@ -155,10 +171,9 @@
 .full-forecast-info_div {
   display: flex;
   justify-content: space-around;
+  
+ 
 
-  h3 {
-
-  }
   
   ul {
     display: flex;
@@ -168,11 +183,32 @@
 
     li {
       display: flex;
-      align-content: center;
+      align-items: center;
+      justify-content: space-between;
+      gap:2%;
       
-      img {
-        width: 2em;
+      
+      
+      div {
+        
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 2em;
+        }
+        
+        .time-n-day {
+          margin: 10%;
+          
+        }
       }
+      
+      .temp {
+        font-weight: bold;
+        margin: 0 0.5em;
+      }
+
       
     }
 

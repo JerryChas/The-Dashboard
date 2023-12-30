@@ -38,7 +38,7 @@ function getDayName(date) {
   if (date.toDateString() === tomorrow.toDateString()) {
     return 'Tomorrow';
   } else {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     return days[dayOfWeek];
   }
 }
@@ -65,8 +65,11 @@ modalPopupContent.innerHTML = `
     <ul>
       ${fullForecast.list.slice(0, 8).map(hourlyData => `
         <li>
-        <img src="https://openweathermap.org/img/wn/${hourlyData.weather[0].icon}.png" alt="${hourlyData.weather[0].description}">
-        ${formatTime(hourlyData.dt * 1000)}: ${hourlyData.main.temp.toFixed(1)}°C
+        <div>
+          <img src="https://openweathermap.org/img/wn/${hourlyData.weather[0].icon}.png" alt="${hourlyData.weather[0].description}">
+          <p class="time-n-day hourly-data_time">${formatTime(hourlyData.dt * 1000)}</p> 
+        </div>
+          <p class="temp">${hourlyData.main.temp.toFixed(1)}°C</p>
         </li>
       `).join('')}
     </ul>
@@ -76,8 +79,11 @@ modalPopupContent.innerHTML = `
     <ul>
       ${fullForecast.list.filter(item => item.dt_txt.includes('12:00')).map(dailyData => `
         <li>
+        <div>
           <img src="https://openweathermap.org/img/wn/${dailyData.weather[0].icon}.png" alt="${dailyData.weather[0].description}">
-          ${getDayName(new Date(dailyData.dt * 1000))}: ${dailyData.main.temp.toFixed(1)}°C
+          <p class="time-n-day daily-data_name">${getDayName(new Date(dailyData.dt * 1000))}</p> 
+        </div>
+          <p class="temp">${dailyData.main.temp.toFixed(1)}°C</p>
         </li>
       `).join('')}
     </ul>
