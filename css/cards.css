@@ -150,6 +150,35 @@
   }
 }
 
+
+/* modal för full väderleksrapport */
+.full-forecast-info_div {
+  display: flex;
+  justify-content: space-around;
+
+  h3 {
+
+  }
+  
+  ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    
+
+    li {
+      display: flex;
+      align-content: center;
+      
+      img {
+        width: 2em;
+      }
+      
+    }
+
+  }
+}
+
 /* ------- Notes ------- */
 
 .note_container{

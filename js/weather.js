@@ -4,14 +4,111 @@ let weatherArray = [];
 // Hämtar väderrapporter från LS eller renderar ut standardinställningar
 weatherArray = JSON.parse(localStorage.getItem('weather')) || [];
 
-//* ----===----===----=== FUNKTIONER ===----===----===---- *//
 
-//* ----=== ÖPPNAR MODAL MED INNEHÅLL
-function openWeatherModal() {
+
+
+
+//* ----===----===----===----===----=== FUNKTIONER ===----===----===----===----===---- *//
+
+//* ----=== Funktioner för att FORMATERA: (dagar,datum och tid)
+// Funktion för att formatera tid (HH:MM)
+function formatTime(timestamp) {
+  const date = new Date(timestamp);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}
+
+// Funktion för att formatera datum (YYYY-MM-DD)
+function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+// Funktion för att hämta veckodagen (morgondagen som "Tomorrow" och övriga med riktiga namn)
+function getDayName(date) {
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  const dayOfWeek = date.getDay();
+  if (date.toDateString() === tomorrow.toDateString()) {
+    return 'Tomorrow';
+  } else {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return days[dayOfWeek];
+  }
+}
+//* ----===----===---- *//
+
+//* ----=== ÖPPNAR MODAL SOM VISAR FULL VÄDERPROGNOS
+function openFullWeatherModal(index) {
+  toggleModalPopup()
+
+  const location = weatherArray[index].location
+  fetchJSON(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=6ce2a025e75ef169171b5f6999c164b5`)
+  .then((fullForecast) => {
+    console.log(fullForecast);
+
+    // Hämtar modal
+    const modalPopupContent = document.querySelector('.modal-popup_content');
+
+    // Renderar innehåll i modal
+modalPopupContent.innerHTML = `
+<h2>${weatherArray[index].name}</h2>
+<div class="full-forecast-info_div">
+  <div>
+    <h3>Hours</h3>
+    <ul>
+      ${fullForecast.list.slice(0, 8).map(hourlyData => `
+        <li>
+        <img src="https://openweathermap.org/img/wn/${hourlyData.weather[0].icon}.png" alt="${hourlyData.weather[0].description}">
+        ${formatTime(hourlyData.dt * 1000)}: ${hourlyData.main.temp.toFixed(1)}°C
+        </li>
+      `).join('')}
+    </ul>
+  </div>
+  <div>
+    <h3>Days</h3>
+    <ul>
+      ${fullForecast.list.filter(item => item.dt_txt.includes('12:00')).map(dailyData => `
+        <li>
+          <img src="https://openweathermap.org/img/wn/${dailyData.weather[0].icon}.png" alt="${dailyData.weather[0].description}">
+          ${getDayName(new Date(dailyData.dt * 1000))}: ${dailyData.main.temp.toFixed(1)}°C
+        </li>
+      `).join('')}
+    </ul>
+  </div>
+</div>
+`;
+
+    
+  })
+  .catch((error) => {
+    console.error('Error fetching full weather forecast:', error);
+    // Renderar innehåll i modal
+    modalPopupContent.innerHTML = `
+        <h2>${weatherArray[index].name}</h2>
+        
+        <h3>Can not found forecast</h3>
+        
+        <h4>Try again later</h3>
+        
+    `;
+  });
+
+  
+}
+
+
+//* ----=== ÖPPNAR MODAL FÖR ATT SÖKA VÄDERPROGNOS
+function openNewWeatherModal() {
   toggleModalPopup();
 
   // Hämtar modal
-  const modalPopup = document.querySelector('.modal-popup');
   const modalPopupContent = document.querySelector('.modal-popup_content');
 
   // Renderar innehåll i modal
@@ -160,14 +257,24 @@ async function renderWeatherList() {
     // ... hämtar vi dess 'remove-knapp"
     const removeBtn = w.querySelector('.remove_btn');
     // När vi klickar på knappen tas den specifika väderrapporten bort
-    removeBtn.addEventListener('click', () => {
+    removeBtn.addEventListener('click', (e) => {
+      // Stoppar event propagation för att förhindra att modalen öppnas
+    e.stopPropagation();
       // Ta bort objektet från weather-arrayen
       weatherArray.splice(index, 1);
-      // Uppdatera renderingen
+      // Uppdatera renderingen efter borttagning
       renderWeatherList();
-      
     });
   });
+
+  //* --> KNAPP: "Weather" -(öppnar modal och visar full väderprognos)
+  weatherContainer.querySelectorAll('.weather').forEach((weather, index) => {
+    weather.addEventListener('click', () => {
+        
+        openFullWeatherModal(index)
+    });
+});
+
 
   // Sparar uppdaterade väderrapporter i local storage
   localStorage.setItem('weather', JSON.stringify(weatherArray));
@@ -223,11 +330,13 @@ function showWeatherPreview(latitude, longitude) {
   });
 }
 
-//* ----===----===----=== ===----=== ===----===----===---- *//
+//* ----===----===----===----===----=== ===----=== ===----===----===----===----===---- *//
 
 renderWeatherList();
 
 //* --> KNAPP: "Add Weather" -(öppnar modal)
 // Lyssna på knappklick för att öppna modal
 const addWeatherBtn = document.querySelector('.add-weather');
-addWeatherBtn.addEventListener('click', openWeatherModal);
+addWeatherBtn.addEventListener('click', openNewWeatherModal);
+
+

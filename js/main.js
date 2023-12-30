@@ -12,9 +12,15 @@ async function fetchJSON(url, option) {
 }
 
 function toggleModalPopup() {
-  // Hämtar modal
-  document.querySelector('.modal-popup').classList.toggle('hidden');
-  
+  const modalPopup = document.querySelector('.modal-popup');
+  const modalPopupContent = document.querySelector('.modal-popup_content');
+
+  // Rensa modalinnehållet
+  modalPopupContent.innerHTML = '';
+
+  // Hämtar modal och ändrar synligheten
+  modalPopup.classList.toggle('hidden');
+
   //* --> KNAPP: "close" -(stänger ner modalen)
   document
     .querySelector('.modal-close_btn')
