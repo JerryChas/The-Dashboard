@@ -1,94 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DNTGFBDZH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-        <!-- favicon -->
-        <link rel="icon" href="data:,">
-        <!-- FONT AWESOME -->
-        <script src="https://kit.fontawesome.com/d684801003.js" crossorigin="anonymous"></script>        
-        <!-- CSS -->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/clock.css">
-        <link rel="stylesheet" href="css/editableTitle.css">
-        <link rel="stylesheet" href="css/cards.css">
-        <link rel="stylesheet" href="css/randomBg.css">
-        <!-- SCRIPT -->
-        <script src="js/main.js" defer></script>
-        <script src="js/clock.js" defer></script>
-        <script src="js/editableTitle.js" defer></script>
-        <script src="js/quicklinks.js" defer></script>
-        <script src="js/weather.js" defer></script>
-        <script src="js/news.js" defer></script>
-        <script src="js/note.js" defer></script>
-        <script src="js/randomBg.js" defer></script>
+      gtag('config', 'G-8DNTGFBDZH');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- favicon -->
+    <link rel="icon" href="data:," />
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/d684801003.js" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/clock.css" />
+    <link rel="stylesheet" href="css/editableTitle.css" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <link rel="stylesheet" href="css/randomBg.css" />
+    <!-- SCRIPT -->
+    <script src="js/main.js" defer></script>
+    <script src="js/clock.js" defer></script>
+    <script src="js/editableTitle.js" defer></script>
+    <script src="js/quicklinks.js" defer></script>
+    <script src="js/weather.js" defer></script>
+    <script src="js/news.js" defer></script>
+    <script src="js/note.js" defer></script>
+    <script src="js/randomBg.js" defer></script>
 
     <title>My Dashboard</title>
-</head>
-<body>
-    
-    <div class="clock_container glass clock-style-1 ">
-        <!-- Här är klockan och datum -->
+  </head>
+  <body>
+    <div class="clock_container glass clock-style-1">
+      <!-- Här är klockan och datum -->
     </div>
-    
+
     <h1 id="editable-title" class="editable" spellcheck="false" contenteditable="true">My Dashboard</h1>
 
     <div class="modal-popup glass hidden">
-        <span class="modal-close_btn">&times</span>
-        <div class="modal-popup_content">
-            <!-- Här renderas innehåll beroende på vad som ska visas -->
-        </div>
-        
+      <span class="modal-close_btn">&times</span>
+      <div class="modal-popup_content">
+        <!-- Här renderas innehåll beroende på vad som ska visas -->
+      </div>
     </div>
 
     <div class="cards_container">
-
-        <!-- QuickLinks -->
-        <div class="quick-links_card card glass">
-            <h2>Quicklinks</h2>
-            <div class="links_container card-content">
-                <!-- Här genereras snabblänkar -->
-            </div>
-            <div class="add-quick-link card_btn glass">
-                <i class="fas fa-plus-circle"></i>
-                <p>Add</p>
-            </div>
+      <!-- QuickLinks -->
+      <div class="quick-links_card card glass">
+        <h2>Quicklinks</h2>
+        <div class="links_container card-content">
+          <!-- Här genereras snabblänkar -->
         </div>
-
-        <!-- Weather -->
-        <div class="weather_card card glass">
-            <h2>Weather</h2>
-            <div class="weather_container card-content">
-                <!-- Här genereras väder -->
-            </div>
-            <div class="add-weather card_btn glass">
-                <i class="fas fa-plus-circle"></i>
-                <p>Add</p>            
-            </div>
+        <div class="add-quick-link card_btn glass">
+          <i class="fas fa-plus-circle"></i>
+          <p>Add</p>
         </div>
+      </div>
 
-        <!-- News -->
-        <div class="news_card card glass">
-            <h2>Latest News</h2>
-            <div class="news_container card-content">
-                <!-- Här genereras senaste nyheter -->
-            </div>
+      <!-- Weather -->
+      <div class="weather_card card glass">
+        <h2>Weather</h2>
+        <div class="weather_container card-content">
+          <!-- Här genereras väder -->
         </div>
-
-        <!--Notes -->
-        <div class="note_card card glass">
-            <h2>Notes</h2>
-            <div class="note_container card-content">
-                <!-- Här genereras en textruta för anteckningar -->
-            </div>
+        <div class="add-weather card_btn glass">
+          <i class="fas fa-plus-circle"></i>
+          <p>Add</p>
         </div>
+      </div>
 
+      <!-- News -->
+      <div class="news_card card glass">
+        <h2>Latest News</h2>
+        <div class="news_container card-content">
+          <!-- Här genereras senaste nyheter -->
+        </div>
+      </div>
+
+      <!--Notes -->
+      <div class="note_card card glass">
+        <h2>Notes</h2>
+        <div class="note_container card-content">
+          <!-- Här genereras en textruta för anteckningar -->
+        </div>
+      </div>
     </div>
 
     <div class="random-bg_btn glass">
-        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
-        <span>Randomize background</span>
+      <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+        <path
+          d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z" />
+      </svg>
+      <span>Randomize background</span>
     </div>
-</body>
+  </body>
 </html>
