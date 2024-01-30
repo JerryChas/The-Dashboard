@@ -22,9 +22,7 @@ function toggleModalPopup() {
   modalPopup.classList.toggle('hidden');
 
   //* --> KNAPP: "close" -(stänger ner modalen)
-  document
-    .querySelector('.modal-close_btn')
-    .addEventListener('click', toggleModalPopup);
+  document.querySelector('.modal-close_btn').addEventListener('click', toggleModalPopup);
 }
 
 function geoFindMe() {
@@ -69,16 +67,3 @@ function geoFindMe() {
     }
   });
 }
-
-//! får kolla på denna sen
-// function windowOnClick(event) {
-//     const modalPopup = document.querySelector('.modal-popup');
-
-//     // Kontrollera om det klickade elementet eller dess föräldrar har klassen 'modal-popup'
-//     if (!event.target.closest('.modal-popup')) {
-//         if (!modalPopup.classList.contains('hidden')) {
-//             console.log('Klickat utanför');
-//             toggleModalPopup();
-//         }
-//     }
-// }
