@@ -283,7 +283,7 @@ async function renderWeatherList() {
     weather.addEventListener('click', () => {
       openFullWeatherModal(index);
 
-      gtag('event', 'click', {
+      gtag('event', 'button_click', {
         event_category: 'Vädermodal',
         event_label: 'Klickade på väder',
       });
